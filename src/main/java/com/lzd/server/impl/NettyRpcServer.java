@@ -1,7 +1,7 @@
 package com.lzd.server.impl;
 
 import com.lzd.server.RpcServer;
-import com.lzd.server.netty.NettyServerInitializer;
+import com.lzd.netty.server.NettyServerInitializer;
 import com.lzd.server.ServiceMapping;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;

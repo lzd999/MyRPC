@@ -1,4 +1,4 @@
-package com.lzd.client.netty;
+package com.lzd.netty.client;
 
 import com.lzd.common.message.RpcResponse;
 import io.netty.channel.ChannelHandlerContext;

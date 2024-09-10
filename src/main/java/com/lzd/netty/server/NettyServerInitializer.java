@@ -1,4 +1,4 @@
-package com.lzd.server.netty;
+package com.lzd.netty.server;
 
 import com.lzd.server.ServiceMapping;
 import io.netty.channel.ChannelInitializer;

@@ -1,7 +1,7 @@
 package com.lzd.client.impl;
 
 import com.lzd.client.RpcClient;
-import com.lzd.client.netty.NettyClientInitializer;
+import com.lzd.netty.client.NettyClientInitializer;
 import com.lzd.client.serviceCenter.ServiceCenter;
 import com.lzd.client.serviceCenter.impl.ZookeeperServiceCenter;
 import com.lzd.common.message.RpcRequest;

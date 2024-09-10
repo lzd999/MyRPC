@@ -1,4 +1,4 @@
-package com.lzd.server.netty;
+package com.lzd.netty.server;
 
 import com.lzd.common.message.RpcRequest;
 import com.lzd.common.message.RpcResponse;
