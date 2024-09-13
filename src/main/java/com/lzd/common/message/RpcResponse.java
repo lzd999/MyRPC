@@ -19,12 +19,15 @@ public class RpcResponse implements Serializable {
     private String message;
     // 响应体
     private Object data;
+    // 响应体消息类型
+    private Class<?> dataType;
 
     // 返回成功信息
     public static RpcResponse success(Object data) {
         return RpcResponse.builder()
                 .code(200)
                 .data(data)
+                .dataType(data.getClass())
                 .build();
     }
 

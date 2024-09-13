@@ -1,5 +1,8 @@
 package com.lzd.netty.client;
 
+import com.lzd.netty.decoder.NettyDecoder;
+import com.lzd.netty.encoder.NettyEncoder;
+import com.lzd.netty.serializer.impl.JsonSerializer;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
@@ -15,13 +18,11 @@ public class NettyClientInitializer extends ChannelInitializer<SocketChannel> {
         // 定义管道对象
         ChannelPipeline pipeline = socketChannel.pipeline();
         // 设置管道的编码器
-        pipeline.addLast(new ObjectEncoder());
+        // pipeline.addLast(new ObjectEncoder());
+        pipeline.addLast(new NettyEncoder(new JsonSerializer()));
         // 设置管道的解码器
-        pipeline.addLast(new ObjectDecoder(Class::forName));
-        // 处理入站数据时，使用基于长度字段的帧解码器
-        // pipeline.addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 4, 0, 4));
-        // 处理出站数据时，使用 4 个字节标识后续消息长度
-        // pipeline.addLast(new LengthFieldPrepender(4));
+        // pipeline.addLast(new ObjectDecoder(Class::forName));
+        pipeline.addLast(new NettyDecoder());
         // 为管道添加自定义处理器
         pipeline.addLast(new NettyClientHandler());
     }
