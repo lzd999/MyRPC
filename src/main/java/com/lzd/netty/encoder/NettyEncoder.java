@@ -18,7 +18,7 @@ public class NettyEncoder extends MessageToByteEncoder<Object> {
 
     @Override
     protected void encode(ChannelHandlerContext channelHandlerContext, Object message, ByteBuf out) throws Exception {
-        System.out.println("当前消息类型为：" + message.getClass());
+        // System.out.println("当前消息类型为：" + message.getClass());
         // 写入消息类型
         if (message instanceof RpcRequest) {
             out.writeInt(MessageType.REQUEST.ordinal());

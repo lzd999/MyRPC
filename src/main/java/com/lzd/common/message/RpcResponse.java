@@ -1,17 +1,21 @@
 package com.lzd.common.message;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
 /**
  * @author 李泽栋
  */
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Builder
 public class RpcResponse implements Serializable {
-    private static final long serialVersionUID = 20240701L;
+    private static final long serialVersionUID = 1L;
 
     // 状态码
     private int code;

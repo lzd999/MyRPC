@@ -16,10 +16,12 @@ public class NettyDecoder extends ByteToMessageDecoder {
     @Override
     protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf in, List<Object> out) throws Exception {
         // 读取消息类型
-        int messageType = in.readInt();
-        if (messageType != MessageType.REQUEST.ordinal() && messageType != MessageType.RESPONSE.ordinal()) {
+        int ordinal = in.readInt();
+        if (ordinal >= MessageType.values().length || ordinal < 0) {
             throw new RuntimeException("不支持的消息类型！");
         }
+        MessageType messageType = MessageType.values()[ordinal];
+
         // 读取消息的序列化方式
         int serializeCode = in.readInt();
         // 根据序列化方式获取序列化器
@@ -33,7 +35,7 @@ public class NettyDecoder extends ByteToMessageDecoder {
         byte[] bytes = new byte[length];
         in.readBytes(bytes);
         // 反序列化消息体
-        Object object = serializer.deserialize(bytes, MessageType.values()[messageType]);
+        Object object = serializer.deserialize(bytes, messageType);
         out.add(object);
     }
 }
